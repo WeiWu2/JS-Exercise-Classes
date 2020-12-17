@@ -86,14 +86,18 @@ class Airplane{
     this.tank += gallons;
    }
    drive(distance){
+     if(distance / this.milesPerGallon > this.tank)
+     {
+      this.odometer += this.tank * this.milesPerGallon;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+     }
+    else{
     this.odometer += distance;
     this.tank -= distance / this.milesPerGallon;
-    if(this.tank == 0)
-      return `I ran out of fuel at ${this.odometer} miles!`;
-   }
-    
+    }
   }
-  
+}
   /*
     TASK 3
       - Write a Lambdasian class.
